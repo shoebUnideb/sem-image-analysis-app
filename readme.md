@@ -2,6 +2,7 @@
 
 ## Overview
 A web-based application for analyzing Scanning Electron Microscope (SEM) images to extract grain statistics. This tool uses computer vision and image processing techniques to segment, analyze, and visualize grain properties in SEM images.
+This project integrates multiple advanced image processing libraries (OpenCV, scikit-image) with web technologies to create an accessible tool for materials scientists.
 
 ## Features
 - Automated grain segmentation using watershed algorithm
