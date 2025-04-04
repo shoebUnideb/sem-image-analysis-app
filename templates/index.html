@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM Image Analysis Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container py-4">
+        <header class="text-center mb-5">
+            <h1 class="display-4">SEM Image Analysis Tool</h1>
+            <p class="lead">Analyze grain statistics from SEM images</p>
+        </header>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="h5 mb-0">Upload Image</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="imageFile" class="form-label">Select SEM Image</label>
+                                <input class="form-control" type="file" id="imageFile" name="file" accept=".jpg,.jpeg,.png,.tif,.tiff" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pixelScale" class="form-label">Pixel to Micron Conversion (µm/pixel)</label>
+                                <input type="number" class="form-control" id="pixelScale" name="pixels_to_um" step="0.01" min="0.01" value="0.5" required>
+                                <div class="form-text">Enter the conversion factor (e.g., 0.5 means 1 pixel = 0.5 µm)</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="analyzeBtn">
+                                <span id="analyzeText">Analyze Image</span>
+                                <span id="analyzeSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4 d-none" id="resultsCard">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="h5 mb-0">Analysis Results</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody id="resultsTable">
+                                    <!-- Results will be inserted here by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <button id="downloadBtn" class="btn btn-success mt-3">
+                            <i class="bi bi-download"></i> Download CSV Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="h5 mb-0">Image Preview</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="card mb-4">
+                            <div class="card-header bg-info text-white">
+                                <h2 class="h5 mb-0">Processed Images</h2>
+                            </div>
+                            <div class="card-body text-center">
+                                <div id="segmentedPreview" class="mb-3 d-none">
+                                    <h3 class="h6">Segmented Image</h3>
+                                    <img id="segmentedImg" class="img-fluid rounded" alt="Segmented image">
+                                </div>
+                                <div id="coloredPreview" class="mb-3 d-none">
+                                    <h3 class="h6">Colored Grains</h3>
+                                    <img id="coloredImg" class="img-fluid rounded" alt="Colored grains image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4 d-none" id="plotsCard">
+                    <div class="card-header bg-warning text-dark">
+                        <h2 class="h5 mb-0">Distribution Plots</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <img id="distributionPlot" class="img-fluid" alt="Distribution plots">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="errorMessage">
+                    <!-- Error message will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
