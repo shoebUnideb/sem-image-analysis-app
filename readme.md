@@ -1,24 +1,22 @@
 # SEM Image Analysis Tool
 
 ## Overview
-A web-based application for analyzing Scanning Electron Microscope (SEM) images to extract grain statistics. This tool uses computer vision and image processing techniques to segment, analyze, and visualize grain properties in SEM images.
-This project integrates multiple advanced image processing libraries (OpenCV, scikit-image) with web technologies to create an accessible tool for materials scientists.
+A web-based application for analyzing Scanning Electron Microscope (SEM) images to extract grain statistics. This tool uses computer vision and image processing techniques to segment, analyze, and visualize grain properties in SEM images. <br>
+This project integrates advanced image processing algorithms (watershed segmentation, distance transforms, morphological operations) with web technologies to create an accessible tool for materials scientists. It handles memory management for large images and generates statistical visualizations in real-time.
 
 ## Features
-- Automated grain segmentation using watershed algorithm
-- Grain property measurements (area, perimeter, orientation, etc.)
-- Statistical analysis of grain distributions
-- Interactive visualization of segmented grains
-- Downloadable CSV reports of analysis results
+- Automated Image Processing: Performs watershed segmentation to identify individual grains
+- Comprehensive Analysis: Measures grain area, perimeter, orientation, and shape characteristics
+- Interactive Visualization: Displays segmented images and colored grain representations
+- Statistical Outputs: Provides summary statistics and distributional analysis
+- Data Export: Generates downloadable CSV reports with all measurements
 
 ## Requirements
-- Python 3.6+
-- Flask
-- OpenCV
-- NumPy
-- SciPy
-- scikit-image
-- Matplotlib
+- Flask (Backend)
+- Bootstrap 5 (Frontend)
+- OpenCV & scikit-image (Image Processing)
+- Matplotlib (Visualization)
+- NumPy & SciPy (Numerical Processing)
 
 ## Installation
 ```bash
@@ -37,10 +35,9 @@ pip install -r requirements.txt
 4. Set the pixel-to-micron conversion factor
 5. Click "Analyze Image" and view results
 
-## Why It's Complex
-This project integrates advanced image processing algorithms (watershed segmentation, distance transforms, morphological operations) with web technologies to create an accessible tool for materials scientists. It handles memory management for large images and generates statistical visualizations in real-time.
 
 ## Use Cases
+To help in statistical analysis of the SEM images
 - Materials science research
 - Quality control in manufacturing
 - Educational tool for microscopy analysis
